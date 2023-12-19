@@ -1,0 +1,39 @@
+{
+    "additions" :
+    {   
+        "hemisphere_labels" : {
+            "Frontal": [
+                "Superior Frontal", "Rostral Middle Frontal", "Caudal Middle Frontal",
+                "Pars Opercularis", "Pars Triangularis", "Pars Orbitalis",
+                "Lateral Orbitofrontal", "Medial Orbitofrontal", "Precentral",
+                "Paracentral"
+            ],
+            "Parietal": [
+                "Superior Parietal", "Inferior Parietal", "Supramarginal",
+                "Postcentral", "Precuneus"
+            ],
+            "Occipital": [
+                "Lateral Occipital", "Lingual", "Cuneus", "Pericalcarine"
+            ],
+            "Temporal": [
+                "Superior Temporal", "Middle Temporal", "Inferior Temporal",
+                "Fusiform", "Transverse Temporal", "Entorhinal", "Parahippocampal"
+            ],
+            "Cingulate (Frontal)": [
+                "Rostral Anterior Cingulate", "Caudal Anterior Cingulate"
+            ],
+            "Cingulate (Parietal)": [
+                "Posterior Cingulate", "Isthmus Cingulate"
+            ],
+            "Entorhinal Cortex": [
+                " entorhinal"
+            ]
+        }
+
+},
+"otherlabels":
+    {
+        "Left-Hippocampus" : "hippocampus_lh",
+        "Right-Hippocampus": "hippocampus_rh"
+    }
+}
