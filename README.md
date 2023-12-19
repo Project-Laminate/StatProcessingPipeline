@@ -19,7 +19,11 @@ pip install -r requirements.txt
 You also need to install the required Python packages. You can install them by running the following command in your terminal:
 
 ### Usage
+
 You can use the CLI by running the following command in your terminal:
+
+This command will convert the aseg+DKT.stats file into CSV and JSON format using the normative_data.csv file. The output files will be saved in the data/output directory.
+_Note: /data contains sample .stat and normative data files._
 
 ```sh
 python src/main.py --stat-file data/aseg+DKT.stats --normative-data data/normative_data.csv
@@ -30,7 +34,7 @@ python src/main.py --stat-file data/aseg+DKT.stats --normative-data data/normati
 usage: main.py [-h] --stat-file STAT_FILE --normative-data NORMATIVE_DATA [--config CONFIG] [--output-dir OUTPUT_DIR]
                [--save-intermediate]
 
-CLI for the Stat Processing Pipeline. Converts a .stat file to a CSV and JSON
+```
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -42,8 +46,5 @@ optional arguments:
   --output-dir OUTPUT_DIR
                         Directory to save the output CSV
   --save-intermediate   Flag to save intermediate dataframes
-```
 
-This command will convert the aseg+DKT.stats file into CSV and JSON format using the normative_data.csv file. The output files will be saved in the data/output directory.
 
-_Note: /data contains sample .stat and normative data files._
