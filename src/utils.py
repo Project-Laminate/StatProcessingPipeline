@@ -3,12 +3,70 @@ import pandas as pd
 from scipy.stats import percentileofscore
 import logging
 import json
+import functools
 import os
 
 # Set up basic configuration for logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+def save_intermediate_dataframe(func):
+    @functools.wraps(func)
+    def wrapper_save_dataframe(*args, **kwargs):
+        df = func(*args, **kwargs)
+        if os.getenv('SAVE_INTERMEDIATE') and isinstance(df, pd.DataFrame):
+            intermediate_dir = 'data/output/intermediate'
+            os.makedirs(intermediate_dir, exist_ok=True)
+            file_name = func.__name__ + '_output.csv'
+            file_path = os.path.join(intermediate_dir, file_name)
+            df.to_csv(file_path, index=False)
+            logging.info(f'Saved intermediate DataFrame to {file_path}')
+        return df
+    return wrapper_save_dataframe
 
-def parse_stats_file(file_path):
+
+
+# dummy functions that return the input DataFrame with wrapper to save intermediate dataframes
+@save_intermediate_dataframe
+def save_combined_stats_df(df, *args, **kwargs):
+    return df
+
+@save_intermediate_dataframe
+def new_stats_df(df, *args, **kwargs):
+    return df
+
+@save_intermediate_dataframe
+def new_normative_df(df, *args, **kwargs):
+    return df
+
+@save_intermediate_dataframe
+def parse_samseg_stats_file(file_path, *args, **kwargs):
+    """
+    Parses the samseg .stat file and extracts the measurement and volume.
+
+    :param file_path: Path to the samseg .stat file
+    :return: DataFrame with measurement names as columns and their corresponding volumes
+    """
+    logging.info(f"Parsing samseg .stat file: {file_path}")
+    data = []
+    with open(file_path, 'r') as file:
+        for line in file:
+            if line.startswith('# Measure'):
+                parts = line.split(',')
+                label = parts[0].split(' ')[2].strip()
+                volume = parts[1].strip()
+                data.append([label, volume])
+
+    df = pd.DataFrame(data, columns=['StructName', 'Volume_mm3'])
+    df['Volume_mm3'] = pd.to_numeric(df['Volume_mm3'], errors='coerce')
+
+    # Transpose and set column headers as in parse_stats_file
+    df = df.T
+    df.columns = df.iloc[0]
+    df = df.drop(df.index[0])
+
+    return df
+
+@save_intermediate_dataframe
+def parse_fastsurfer_stats_file(file_path, *args, **kwargs):
     """
     Parses the .stat file and extracts the volume and structure name.
 
@@ -47,7 +105,8 @@ def clean_label(label):
     """
     return re.sub(r'[^a-zA-Z]', '', label).lower()
 
-def create_new_columns(df, labels):
+@save_intermediate_dataframe
+def create_new_columns(df, labels, *args, **kwargs):
     """
     Sums up the volumes for specified structures and creates new columns for each hemisphere.
 
@@ -72,7 +131,8 @@ def create_new_columns(df, labels):
     
     return new_columns
 
-def calculate_percentiles_and_normals(stats_df, normative_df, new_column_names):
+@save_intermediate_dataframe
+def calculate_percentiles_and_normals(stats_df, normative_df, new_column_names, *args, **kwargs):
     """
     Calculates percentiles and normal ranges for the given DataFrame and returns a DataFrame
     with only the new columns and their calculated values.
@@ -100,8 +160,8 @@ def calculate_percentiles_and_normals(stats_df, normative_df, new_column_names):
 
     return pd.DataFrame(new_data)
 
-
-def create_other_columns(stats_df, normative_df, labels, columns_list):
+@save_intermediate_dataframe
+def create_other_columns(stats_df, normative_df, labels, columns_list, *args, **kwargs):
     # parse through config['otherlabels'] and add the new columns to the DataFrame
     for label, components in labels.items():
         logging.info(f"Creating new column {components} based on {label}")

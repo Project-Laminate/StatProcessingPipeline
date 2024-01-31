@@ -1,10 +1,12 @@
 import os
 import pandas as pd
 import json
-from utils import create_other_columns, csv_to_json, parse_stats_file, create_new_columns, calculate_percentiles_and_normals
+from utils import (create_other_columns, csv_to_json, parse_fastsurfer_stats_file, 
+                   parse_samseg_stats_file, create_new_columns, calculate_percentiles_and_normals,
+                   save_combined_stats_df, new_stats_df, new_normative_df)
 import logging
 
-def run_pipeline(stat_file_path, normative_data_path, config_path, output_dir, save_intermediate):
+def run_pipeline(stat_file_paths, stat_types, normative_data_path, config_path, output_dir):
     # Ensure the output and intermediate directories exist
     os.makedirs(output_dir, exist_ok=True)
     intermediate_dir = os.path.join(output_dir, 'intermediate')
@@ -13,19 +15,29 @@ def run_pipeline(stat_file_path, normative_data_path, config_path, output_dir, s
     # Load the hemisphere labels configuration
     with open(config_path, 'r') as config_file:
         config = json.load(config_file)
-    
-    # Process the .stat file to extract the data and transform it into a DataFrame
-    stats_df = parse_stats_file(stat_file_path)
-    
-    # If the user wants to save the intermediate results
-    if save_intermediate:
-        intermediate_stats_path = os.path.join(intermediate_dir, 'parsed_stats.csv')
-        stats_df.to_csv(intermediate_stats_path, index=False)
-        logging.info(f'Parsed stats saved to {intermediate_stats_path}')
+
+    # Initialize an empty DataFrame for stats
+    combined_stats_df = pd.DataFrame()
+
+    for stat_file_path, stat_type in zip(stat_file_paths, stat_types):
+        if stat_type == 'fastsurfer':
+            stats_df = parse_fastsurfer_stats_file(stat_file_path)
+            fastsurfer_path = stat_file_path
+        elif stat_type == 'samseg':
+            stats_df = parse_samseg_stats_file(stat_file_path)
+        
+        # Combine data from different stat files
+        combined_stats_df = pd.concat([combined_stats_df, stats_df], axis=1)
+
+        _ = save_combined_stats_df(combined_stats_df)
+
+        ###x Continue working with combined stats from here
+
+    # # Process the .stat file to extract the data and transform it into a DataFrame
+    stats_df = parse_fastsurfer_stats_file(fastsurfer_path)
 
     # Load normative data
     normative_df = pd.read_csv(normative_data_path)
-    
     
     # Create new columns and get the list of new column names
     stats_new_column_names = create_new_columns(stats_df, config['additions']['hemisphere_labels'])
@@ -36,12 +48,14 @@ def run_pipeline(stat_file_path, normative_data_path, config_path, output_dir, s
 
     stats_new_column_names = create_other_columns(stats_df, normative_df, config['otherlabels'], stats_new_column_names)
 
-    # #  check if the new column names are the same in both DataFrames
-    # if stats_new_column_names != normative_new_column_names:
-    #     raise ValueError("New column names are not the same in both DataFrames")
+    # save the new stats and normative dataframes as intermediate files
+    _ = new_stats_df(stats_df)
+    _ = new_normative_df(normative_df)
 
     # Calculate percentiles and normal ranges using the new column names
     final_df = calculate_percentiles_and_normals(stats_df, normative_df, stats_new_column_names)
+
+
 
     # Save the final DataFrame as a CSV file
     final_output_path = os.path.join(output_dir, 'final_report.csv')
