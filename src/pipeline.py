@@ -26,8 +26,10 @@ def run_pipeline(age, sex, stat_file_paths, stat_types, normative_data_path, con
         elif stat_type == 'samseg':
             stats_df = parse_samseg_stats_file(stat_file_path)
         
+        # Check and exclude columns that already exist in combined_stats_df
+        new_columns = stats_df.columns.difference(combined_stats_df.columns)
         # Combine data from different stat files
-        combined_stats_df = pd.concat([combined_stats_df, stats_df], axis=1)
+        combined_stats_df = pd.concat([combined_stats_df, stats_df[new_columns]], axis=1)
 
         _ = save_combined_stats_df(combined_stats_df)
 
