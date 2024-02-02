@@ -1,4 +1,13 @@
-{
+{   "ordering": [
+    "hippocampus",
+    "frontal",
+    "parietal",
+    "occipital",
+    "temporal",
+    "cingulatefrontal",
+    "cingulateparietal",
+    "entorhinalcortex"
+  ],
     "additions" :
     {   
         "hemisphere_labels" : {

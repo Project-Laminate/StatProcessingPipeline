@@ -240,3 +240,30 @@ def csv_to_json(csv_path, json_path):
     with open(json_path, 'w') as json_file:
         json.dump(report_data, json_file, indent=4)
 
+def reorder_json(input_json_path, output_json_path, config_path='src/config.json'):
+    """
+    Reorders the sections of a JSON file based on the order specified in a config file.
+
+    Parameters:
+    input_json_path (str): Path to the input JSON file.
+    output_json_path (str): Path to the output JSON file where the reordered data will be saved.
+    config_path (str): Path to the configuration JSON file containing the ordering.
+    """
+    # Load the ordering from the config file
+    with open(config_path, 'r') as file:
+        config = json.load(file)
+    ordering = config.get('ordering', [])
+    
+    # Load the existing JSON data
+    with open(input_json_path, 'r') as file:
+        data = json.load(file)
+    
+    # Reorder the data based on the ordering
+    reordered_data = {region: data[region] for region in ordering if region in data}
+    
+    # Write the reordered data to the output JSON file
+    with open(output_json_path, 'w') as file:
+        json.dump(reordered_data, file, indent=4)
+
+    logging.info(f"Reordered JSON data has been saved to {output_json_path}.")
+

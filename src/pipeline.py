@@ -3,7 +3,7 @@ import pandas as pd
 import json
 from utils import (create_other_columns, csv_to_json, parse_fastsurfer_stats_file, 
                    parse_samseg_stats_file, create_new_columns, calculate_percentiles_and_normals,
-                   save_combined_stats_df, new_stats_df, new_normative_df)
+                   save_combined_stats_df, new_stats_df, new_normative_df, reorder_json)
 import logging
 
 def run_pipeline(age, sex, stat_file_paths, stat_types, normative_data_path, config_path, output_dir):
@@ -62,7 +62,7 @@ def run_pipeline(age, sex, stat_file_paths, stat_types, normative_data_path, con
     # Calculate percentiles and normal ranges using the new column names
     final_df = calculate_percentiles_and_normals(stats_df, normative_df, stats_new_column_names)
 
-    # Save the final DataFrame as a CSV file
+    # # Save the final DataFrame as a CSV file
     final_output_path = os.path.join(output_dir, 'final_report.csv')
     final_df.to_csv(final_output_path, index=False)
     logging.info(f'Final report saved to {final_output_path}')
@@ -71,5 +71,8 @@ def run_pipeline(age, sex, stat_file_paths, stat_types, normative_data_path, con
     json_output_path = os.path.join(output_dir, 'final_report.json')
     csv_to_json(final_output_path, json_output_path)
     logging.info(f'JSON report saved to {json_output_path}')
+
+    reordered_json_output_path = os.path.join(output_dir, 'reordered_final_report.json')
+    reorder_json(json_output_path, reordered_json_output_path)
 
 # You can call run_pipeline here for testing or you can use this module as an import.
