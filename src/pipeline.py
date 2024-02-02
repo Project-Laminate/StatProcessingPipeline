@@ -6,7 +6,7 @@ from utils import (create_other_columns, csv_to_json, parse_fastsurfer_stats_fil
                    save_combined_stats_df, new_stats_df, new_normative_df)
 import logging
 
-def run_pipeline(stat_file_paths, stat_types, normative_data_path, config_path, output_dir):
+def run_pipeline(age, sex, stat_file_paths, stat_types, normative_data_path, config_path, output_dir):
     # Ensure the output and intermediate directories exist
     os.makedirs(output_dir, exist_ok=True)
     intermediate_dir = os.path.join(output_dir, 'intermediate')
@@ -33,8 +33,13 @@ def run_pipeline(stat_file_paths, stat_types, normative_data_path, config_path, 
 
         ###x Continue working with combined stats from here
 
-    # # Process the .stat file to extract the data and transform it into a DataFrame
+    # clear the stats_df variable
+    stats_df = None
     stats_df = parse_fastsurfer_stats_file(fastsurfer_path)
+
+    # # Process the .stat file to extract the data and transform it into a DataFrame
+    stats_df['Sex'] = sex  # 'sex' from the command-line argument
+    stats_df['Age'] = age  # 'age' from the command-line argument
 
     # Load normative data
     normative_df = pd.read_csv(normative_data_path)
@@ -54,8 +59,6 @@ def run_pipeline(stat_file_paths, stat_types, normative_data_path, config_path, 
 
     # Calculate percentiles and normal ranges using the new column names
     final_df = calculate_percentiles_and_normals(stats_df, normative_df, stats_new_column_names)
-
-
 
     # Save the final DataFrame as a CSV file
     final_output_path = os.path.join(output_dir, 'final_report.csv')

@@ -143,20 +143,38 @@ def calculate_percentiles_and_normals(stats_df, normative_df, new_column_names, 
     :return: DataFrame with only the new columns and calculated percentile and normal range columns
     """
     logging.info("Calculating percentiles and normal ranges")
+
+    # Extracting subject's sex and age from stats_df
+    subject_sex = stats_df['Sex'].iloc[0]
+    subject_age = stats_df['Age'].iloc[0] * 12 # Assuming this is in years
+
+    # Calculating age range for filtering
+    age_range_min = subject_age - 60  # Subtracting 5 years in months
+    age_range_max = subject_age + 60  # Adding 5 years in months
+
+    # Filtering normative_df based on sex and age range
+    filtered_normative_df = normative_df[
+        (normative_df['sex'] == subject_sex) &
+        (normative_df['age'] >= age_range_min) &
+        (normative_df['age'] <= age_range_max)
+    ]
+
     new_data = {}
     for column in new_column_names:
         if column in stats_df.columns and column in normative_df.columns:
             value = stats_df[column].iloc[0]
-            percentile = percentileofscore(normative_df[column], value, 'rank')
-            max_normal = normative_df[column].mean() + (2 * normative_df[column].std())
-            min_normal = normative_df[column].mean() - (2 * normative_df[column].std())
+
+            percentile = percentileofscore(filtered_normative_df[column], value, 'rank')
+            max_normal = filtered_normative_df[column].mean() + (2 * filtered_normative_df[column].std())
+            min_normal = filtered_normative_df[column].mean() - (2 * filtered_normative_df[column].std())
 
             new_data[f'{column}_volume'] = [value]
             new_data[f'{column}_percentile'] = [percentile]
             new_data[f'{column}_max_normal'] = [max_normal]
             new_data[f'{column}_min_normal'] = [min_normal]
-        else:
-            logging.warning(f"Column {column} not found in both stats_df and normative_df")
+        else:   
+            logging.warning(f"Column {column} not found in filtered normative data or insufficient unique values for percentile calculation")
+
 
     return pd.DataFrame(new_data)
 

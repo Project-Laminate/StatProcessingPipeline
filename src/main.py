@@ -21,6 +21,10 @@ def main():
     # Create an argument parser instance
     parser = argparse.ArgumentParser(description='CLI for the Stat Processing Pipeline. Converts .stat file(s) to a CSV and JSON for reporting.')
 
+    # Arguments for the demographics of the subject
+    parser.add_argument('--age', type=int, required=True, help='Age of the subject (years)')
+    parser.add_argument('--sex', choices=['M', 'F'], required=True, help='Sex of the subject (M/F)')
+
     # Argument for the path to the stat files, can be used multiple times
     parser.add_argument('--stat-file', action='append', required=True, help='Path to a stat file')
 
@@ -50,7 +54,7 @@ def main():
     stat_types = args.stat_type + ['fastsurfer'] * (len(stat_files) - len(args.stat_type))
 
     # Run the pipeline with the processed arguments
-    run_pipeline(stat_files, stat_types, args.normative_data, args.config, args.output_dir)
+    run_pipeline(args.age, args.sex, stat_files, stat_types, args.normative_data, args.config, args.output_dir)
 
 if __name__ == '__main__':
     main()
