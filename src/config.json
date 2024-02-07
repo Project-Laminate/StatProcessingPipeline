@@ -1,5 +1,6 @@
 {   "ordering": [
     "hippocampus",
+    "hippocampalpercentage",
     "frontal",
     "parietal",
     "occipital",
@@ -38,11 +39,12 @@
                 " entorhinal"
             ]
         }
-
 },
 "otherlabels":
     {
         "Left-Hippocampus" : "hippocampus_lh",
-        "Right-Hippocampus": "hippocampus_rh"
+        "Right-Hippocampus": "hippocampus_rh",
+        "Left-Hippocampal-Percentage": "hippocampalpercentage_lh",
+        "Right-Hippocampal-Percentage": "hippocampalpercentage_rh"
     }
 }

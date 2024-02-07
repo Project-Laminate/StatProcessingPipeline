@@ -23,6 +23,21 @@ def save_intermediate_dataframe(func):
     return wrapper_save_dataframe
 
 
+### Predefined Functions ###
+class CustomFunctions:
+    @staticmethod
+    def calculate_hippocampal_percentage(df):
+        """Custom function to calculate hippocampal percentages."""
+
+        # print the column names of the DataFrame
+        print(df.columns)
+
+        df['Left-Hippocampal-Percentage'] = df['Left-Hippocampus'] / (df['Left-Hippocampus'] + df['Left-Inf-Lat-Vent']) * 100
+        df['Right-Hippocampal-Percentage'] = df['Right-Hippocampus'] / (df['Right-Hippocampus'] + df['Right-Inf-Lat-Vent']) * 100
+        return df
+    
+    ## Add more custom functions here
+
 
 # dummy functions that return the input DataFrame with wrapper to save intermediate dataframes
 @save_intermediate_dataframe
@@ -105,6 +120,9 @@ def clean_label(label):
     """
     return re.sub(r'[^a-zA-Z]', '', label).lower()
 
+# create a function called custom functions which calls other functions that create specific new columns 
+
+
 @save_intermediate_dataframe
 def create_new_columns(df, labels, *args, **kwargs):
     """
@@ -129,6 +147,8 @@ def create_new_columns(df, labels, *args, **kwargs):
             else:
                 logging.warning(f"No columns found for {new_column_name}. Missing columns: {set(component_columns) - set(df.columns)}")
     
+    
+
     return new_columns
 
 @save_intermediate_dataframe

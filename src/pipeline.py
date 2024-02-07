@@ -3,7 +3,7 @@ import pandas as pd
 import json
 from utils import (create_other_columns, csv_to_json, parse_fastsurfer_stats_file, 
                    parse_samseg_stats_file, create_new_columns, calculate_percentiles_and_normals,
-                   save_combined_stats_df, new_stats_df, new_normative_df, reorder_json)
+                   save_combined_stats_df, new_stats_df, new_normative_df, reorder_json, CustomFunctions)
 import logging
 
 def run_pipeline(age, sex, stat_file_paths, stat_types, normative_data_path, config_path, output_dir):
@@ -45,6 +45,13 @@ def run_pipeline(age, sex, stat_file_paths, stat_types, normative_data_path, con
 
     # Load normative data
     normative_df = pd.read_csv(normative_data_path)
+
+    # Call the custom functions here
+    print('Calling custom functions on stats')
+    stats_df = CustomFunctions.calculate_hippocampal_percentage(stats_df)
+    print('Calling custom functions on normative')
+    normative_df = CustomFunctions.calculate_hippocampal_percentage(normative_df)
+ 
     
     # Create new columns and get the list of new column names
     stats_new_column_names = create_new_columns(stats_df, config['additions']['hemisphere_labels'])
