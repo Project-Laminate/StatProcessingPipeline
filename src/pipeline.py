@@ -3,7 +3,7 @@ import pandas as pd
 import json
 from utils import (create_other_columns, csv_to_json, parse_fastsurfer_stats_file, 
                    parse_samseg_stats_file, create_new_columns, calculate_percentiles_and_normals,
-                   save_combined_stats_df, new_stats_df, new_normative_df, reorder_json, CustomFunctions)
+                   save_combined_stats_df, new_stats_df, new_normative_df, reorder_json, transform_json, CustomFunctions)
 import logging
 
 def run_pipeline(age, sex, stat_file_paths, stat_types, normative_data_path, config_path, output_dir):
@@ -79,7 +79,17 @@ def run_pipeline(age, sex, stat_file_paths, stat_types, normative_data_path, con
     csv_to_json(final_output_path, json_output_path)
     logging.info(f'JSON report saved to {json_output_path}')
 
-    reordered_json_output_path = os.path.join(output_dir, 'reordered_final_report.json')
-    reorder_json(json_output_path, reordered_json_output_path)
+    # turn transform JSON on the final JSON
+    initial_json = json.load(open(json_output_path))
+    final_json = transform_json(initial_json, config)
+
+    # save the transformed JSON
+    transformed_json_output_path = os.path.join(output_dir, 'csv_data.json')
+    with open(transformed_json_output_path, 'w') as f:
+        json.dump(final_json, f, indent=4)
+    logging.info(f'Transformed JSON report saved to {transformed_json_output_path}')
+
+    # reordered_json_output_path = os.path.join(output_dir, 'reordered_final_report.json')
+    # reorder_json(json_output_path, reordered_json_output_path)
 
 # You can call run_pipeline here for testing or you can use this module as an import.

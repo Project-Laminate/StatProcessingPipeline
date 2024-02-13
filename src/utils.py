@@ -7,19 +7,24 @@ import functools
 import os
 
 # Set up basic configuration for logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
+
 def save_intermediate_dataframe(func):
     @functools.wraps(func)
     def wrapper_save_dataframe(*args, **kwargs):
         df = func(*args, **kwargs)
-        if os.getenv('SAVE_INTERMEDIATE') and isinstance(df, pd.DataFrame):
-            intermediate_dir = 'data/output/intermediate'
+        if os.getenv("SAVE_INTERMEDIATE") and isinstance(df, pd.DataFrame):
+            intermediate_dir = "data/output/intermediate"
             os.makedirs(intermediate_dir, exist_ok=True)
-            file_name = func.__name__ + '_output.csv'
+            file_name = func.__name__ + "_output.csv"
             file_path = os.path.join(intermediate_dir, file_name)
             df.to_csv(file_path, index=False)
-            logging.info(f'Saved intermediate DataFrame to {file_path}')
+            logging.info(f"Saved intermediate DataFrame to {file_path}")
         return df
+
     return wrapper_save_dataframe
 
 
@@ -32,10 +37,18 @@ class CustomFunctions:
         # print the column names of the DataFrame
         print(df.columns)
 
-        df['Left-Hippocampal-Percentage'] = df['Left-Hippocampus'] / (df['Left-Hippocampus'] + df['Left-Inf-Lat-Vent']) * 100
-        df['Right-Hippocampal-Percentage'] = df['Right-Hippocampus'] / (df['Right-Hippocampus'] + df['Right-Inf-Lat-Vent']) * 100
+        df["Left-Hippocampal-Percentage"] = (
+            df["Left-Hippocampus"]
+            / (df["Left-Hippocampus"] + df["Left-Inf-Lat-Vent"])
+            * 100
+        )
+        df["Right-Hippocampal-Percentage"] = (
+            df["Right-Hippocampus"]
+            / (df["Right-Hippocampus"] + df["Right-Inf-Lat-Vent"])
+            * 100
+        )
         return df
-    
+
     ## Add more custom functions here
 
 
@@ -44,13 +57,16 @@ class CustomFunctions:
 def save_combined_stats_df(df, *args, **kwargs):
     return df
 
+
 @save_intermediate_dataframe
 def new_stats_df(df, *args, **kwargs):
     return df
 
+
 @save_intermediate_dataframe
 def new_normative_df(df, *args, **kwargs):
     return df
+
 
 @save_intermediate_dataframe
 def parse_samseg_stats_file(file_path, *args, **kwargs):
@@ -62,16 +78,16 @@ def parse_samseg_stats_file(file_path, *args, **kwargs):
     """
     logging.info(f"Parsing samseg .stat file: {file_path}")
     data = []
-    with open(file_path, 'r') as file:
+    with open(file_path, "r") as file:
         for line in file:
-            if line.startswith('# Measure'):
-                parts = line.split(',')
-                label = parts[0].split(' ')[2].strip()
+            if line.startswith("# Measure"):
+                parts = line.split(",")
+                label = parts[0].split(" ")[2].strip()
                 volume = parts[1].strip()
                 data.append([label, volume])
 
-    df = pd.DataFrame(data, columns=['StructName', 'Volume_mm3'])
-    df['Volume_mm3'] = pd.to_numeric(df['Volume_mm3'], errors='coerce')
+    df = pd.DataFrame(data, columns=["StructName", "Volume_mm3"])
+    df["Volume_mm3"] = pd.to_numeric(df["Volume_mm3"], errors="coerce")
 
     # Transpose and set column headers as in parse_stats_file
     df = df.T
@@ -79,6 +95,7 @@ def parse_samseg_stats_file(file_path, *args, **kwargs):
     df = df.drop(df.index[0])
 
     return df
+
 
 @save_intermediate_dataframe
 def parse_fastsurfer_stats_file(file_path, *args, **kwargs):
@@ -90,19 +107,19 @@ def parse_fastsurfer_stats_file(file_path, *args, **kwargs):
     """
     logging.info(f"Parsing .stat file: {file_path}")
     data = []
-    with open(file_path, 'r') as file:
+    with open(file_path, "r") as file:
         for line in file:
-            if line.startswith('#'):
+            if line.startswith("#"):
                 continue
-            split_line = re.split(r'\s+', line.strip())
+            split_line = re.split(r"\s+", line.strip())
             if len(split_line) < 5:
                 continue
             volume_mm3 = split_line[3]
             struct_name = split_line[4]
             data.append([struct_name, volume_mm3])
 
-    df = pd.DataFrame(data, columns=['StructName', 'Volume_mm3'])
-    df['Volume_mm3'] = pd.to_numeric(df['Volume_mm3'], errors='coerce')
+    df = pd.DataFrame(data, columns=["StructName", "Volume_mm3"])
+    df["Volume_mm3"] = pd.to_numeric(df["Volume_mm3"], errors="coerce")
 
     # Transpose the DataFrame and set the first row as column headers
     df = df.T
@@ -111,6 +128,7 @@ def parse_fastsurfer_stats_file(file_path, *args, **kwargs):
 
     return df
 
+
 def clean_label(label):
     """
     Cleans the label by removing non-alphabetic characters and converting to lowercase.
@@ -118,9 +136,10 @@ def clean_label(label):
     :param label: The label to clean
     :return: Cleaned label
     """
-    return re.sub(r'[^a-zA-Z]', '', label).lower()
+    return re.sub(r"[^a-zA-Z]", "", label).lower()
 
-# create a function called custom functions which calls other functions that create specific new columns 
+
+# create a function called custom functions which calls other functions that create specific new columns
 
 
 @save_intermediate_dataframe
@@ -135,9 +154,11 @@ def create_new_columns(df, labels, *args, **kwargs):
     logging.info("Creating new columns based on hemisphere labels")
     new_columns = []
     for region, components in labels.items():
-        for hemisphere in ['rh', 'lh']:
+        for hemisphere in ["rh", "lh"]:
             new_column_name = f"{clean_label(region)}_{hemisphere}"
-            component_columns = [f"ctx-{hemisphere}-{clean_label(component)}" for component in components]
+            component_columns = [
+                f"ctx-{hemisphere}-{clean_label(component)}" for component in components
+            ]
             existing_columns = [col for col in component_columns if col in df.columns]
 
             if existing_columns:
@@ -145,14 +166,17 @@ def create_new_columns(df, labels, *args, **kwargs):
                 df[new_column_name] = df[new_column_name].round(3)
                 new_columns.append(new_column_name)
             else:
-                logging.warning(f"No columns found for {new_column_name}. Missing columns: {set(component_columns) - set(df.columns)}")
-    
-    
+                logging.warning(
+                    f"No columns found for {new_column_name}. Missing columns: {set(component_columns) - set(df.columns)}"
+                )
 
     return new_columns
 
+
 @save_intermediate_dataframe
-def calculate_percentiles_and_normals(stats_df, normative_df, new_column_names, *args, **kwargs):
+def calculate_percentiles_and_normals(
+    stats_df, normative_df, new_column_names, *args, **kwargs
+):
     """
     Calculates percentiles and normal ranges for the given DataFrame and returns a DataFrame
     with only the new columns and their calculated values.
@@ -165,8 +189,8 @@ def calculate_percentiles_and_normals(stats_df, normative_df, new_column_names, 
     logging.info("Calculating percentiles and normal ranges")
 
     # Extracting subject's sex and age from stats_df
-    subject_sex = stats_df['Sex'].iloc[0]
-    subject_age = stats_df['Age'].iloc[0] * 12 # Assuming this is in years
+    subject_sex = stats_df["Sex"].iloc[0]
+    subject_age = stats_df["Age"].iloc[0] * 12  # Assuming this is in years
 
     # Calculating age range for filtering
     age_range_min = subject_age - 60  # Subtracting 5 years in months
@@ -174,29 +198,40 @@ def calculate_percentiles_and_normals(stats_df, normative_df, new_column_names, 
 
     # Filtering normative_df based on sex and age range
     filtered_normative_df = normative_df[
-        (normative_df['sex'] == subject_sex) &
-        (normative_df['age'] >= age_range_min) &
-        (normative_df['age'] <= age_range_max)
+        (normative_df["sex"] == subject_sex)
+        & (normative_df["age"] >= age_range_min)
+        & (normative_df["age"] <= age_range_max)
     ]
+
+    # print size of filtered normative data
+    # logging.info(f"Size of filtered normative data: {filtered_normative_df.shape}")
 
     new_data = {}
     for column in new_column_names:
         if column in stats_df.columns and column in normative_df.columns:
             value = stats_df[column].iloc[0]
 
-            percentile = percentileofscore(filtered_normative_df[column], value, 'rank')
-            max_normal = filtered_normative_df[column].mean() + (2 * filtered_normative_df[column].std())
-            min_normal = filtered_normative_df[column].mean() - (2 * filtered_normative_df[column].std())
+            percentile = percentileofscore(filtered_normative_df[column], value, "rank")
+            max_normal = filtered_normative_df[column].mean() + (
+                2 * filtered_normative_df[column].std()
+            )
+            min_normal = filtered_normative_df[column].mean() - (
+                2 * filtered_normative_df[column].std()
+            )
 
-            new_data[f'{column}_volume'] = [value]
-            new_data[f'{column}_percentile'] = [percentile]
-            new_data[f'{column}_max_normal'] = [max_normal]
-            new_data[f'{column}_min_normal'] = [min_normal]
-        else:   
-            logging.warning(f"Column {column} not found in filtered normative data or insufficient unique values for percentile calculation")
-
+            new_data[f"{column}_reading"] = [value]
+            new_data[f"{column}_percentile"] = [percentile]
+            new_data[f"{column}_max_normal"] = [max_normal]
+            new_data[f"{column}_min_normal"] = [min_normal]
+            new_data[f"{column}_mean"] = [filtered_normative_df[column].mean()]
+            new_data[f"{column}_std"] = [filtered_normative_df[column].std()]
+        else:
+            logging.warning(
+                f"Column {column} not found in filtered normative data or insufficient unique values for percentile calculation"
+            )
 
     return pd.DataFrame(new_data)
+
 
 @save_intermediate_dataframe
 def create_other_columns(stats_df, normative_df, labels, columns_list, *args, **kwargs):
@@ -210,6 +245,7 @@ def create_other_columns(stats_df, normative_df, labels, columns_list, *args, **
         columns_list.append(components)
 
     return columns_list
+
 
 def csv_to_json(csv_path, json_path):
     """
@@ -225,14 +261,14 @@ def csv_to_json(csv_path, json_path):
 
     The function does not return any value. Instead, it writes the processed data to a JSON file.
     """
-    
+
     # Load the CSV file
     df = pd.read_csv(csv_path)
 
     # Process and restructure the data
     report_data = {}
     for column in df.columns:
-        parts = column.split('_')
+        parts = column.split("_")
         if len(parts) < 3:
             continue
 
@@ -247,20 +283,25 @@ def csv_to_json(csv_path, json_path):
             report_data[base_label][hemisphere] = {}
 
         metric_value = df[column].iloc[0]
-        if metric_type == 'volume':
-            report_data[base_label][hemisphere]['volume'] = metric_value
-        elif metric_type == 'percentile':
-            report_data[base_label][hemisphere]['percentile'] = metric_value
-        elif metric_type == 'max':
-            report_data[base_label][hemisphere]['max'] = metric_value
-        elif metric_type == 'min':
-            report_data[base_label][hemisphere]['min'] = metric_value
+        if metric_type == "reading":
+            report_data[base_label][hemisphere]["reading"] = metric_value
+        elif metric_type == "percentile":
+            report_data[base_label][hemisphere]["percentile"] = metric_value
+        elif metric_type == "max":
+            report_data[base_label][hemisphere]["max"] = metric_value
+        elif metric_type == "min":
+            report_data[base_label][hemisphere]["min"] = metric_value
+        elif metric_type == "mean":
+            report_data[base_label][hemisphere]["mean"] = metric_value
+        elif metric_type == "std":
+            report_data[base_label][hemisphere]["std"] = metric_value
 
     # Save the processed data as JSON
-    with open(json_path, 'w') as json_file:
+    with open(json_path, "w") as json_file:
         json.dump(report_data, json_file, indent=4)
 
-def reorder_json(input_json_path, output_json_path, config_path='src/config.json'):
+
+def reorder_json(input_json_path, output_json_path, config_path="src/config.json"):
     """
     Reorders the sections of a JSON file based on the order specified in a config file.
 
@@ -270,20 +311,59 @@ def reorder_json(input_json_path, output_json_path, config_path='src/config.json
     config_path (str): Path to the configuration JSON file containing the ordering.
     """
     # Load the ordering from the config file
-    with open(config_path, 'r') as file:
+    with open(config_path, "r") as file:
         config = json.load(file)
-    ordering = config.get('ordering', [])
-    
+    ordering = config.get("ordering", [])
+
     # Load the existing JSON data
-    with open(input_json_path, 'r') as file:
+    with open(input_json_path, "r") as file:
         data = json.load(file)
-    
+
     # Reorder the data based on the ordering
     reordered_data = {region: data[region] for region in ordering if region in data}
-    
+
     # Write the reordered data to the output JSON file
-    with open(output_json_path, 'w') as file:
+    with open(output_json_path, "w") as file:
         json.dump(reordered_data, file, indent=4)
 
     logging.info(f"Reordered JSON data has been saved to {output_json_path}.")
+
+
+import json
+
+
+def transform_json(initial_json, config):
+    transformed = {}
+
+    for region, details in initial_json.items():
+        # Retrieve configuration for the region
+        region_config = config["regions"].get(region, {})
+        priority = region_config.get("priority", 0)
+        display = region_config.get("display", "")
+        units = region_config.get("units", "")
+
+        transformed_region = {"priority": priority, "display": display}
+
+        for hemisphere, metrics in details.items():
+            # Replace 'volume' with 'reading' and add 'unit'
+            metrics_transformed = {
+                "reading": metrics.get("reading"),
+                "unit": units,
+                "percentile": metrics.get("percentile"),
+                "max": metrics.get("max"),
+                "min": metrics.get("min"),
+                "mean": metrics.get("mean"),
+                "std": metrics.get("std"),
+            }
+            transformed_region[hemisphere] = metrics_transformed
+
+        transformed[region] = transformed_region
+
+    # Sort the regions by priority
+    transformed_sorted = {
+        k: v
+        for k, v in sorted(transformed.items(), key=lambda item: item[1]["priority"])
+    }
+
+    return transformed_sorted
 

@@ -8,7 +8,7 @@
 # python src/main.py --stat-file data/aseg+DKT.stats --stat-type fastsurfer --normative-data data/normative_data.csv
 
 # test both fastsurfer and samseg files
-# python src/main.py --stat-file data/aseg+DKT.stats --stat-type fastsurfer --stat-file data/samseg.stats --stat-type samseg --normative-data data/normative_data.csv
+# python src/main.py --age 43 --sex M --stat-file data/aseg+DKT.stats --stat-type fastsurfer --stat-file data/samseg.stats --stat-type samseg --normative-data data/normative_data.csv
 
 import argparse
 from pipeline import run_pipeline

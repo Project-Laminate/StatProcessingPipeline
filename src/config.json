@@ -1,48 +1,102 @@
-{   "ordering": [
-    "hippocampus",
-    "hippocampalpercentage",
-    "frontal",
-    "parietal",
-    "occipital",
-    "temporal",
-    "cingulatefrontal",
-    "cingulateparietal",
-    "entorhinalcortex"
-  ],
-    "additions" :
-    {   
-        "hemisphere_labels" : {
+{
+    "regions": {
+        "hippocampus": {
+            "priority": 1,
+            "display": "Hippocampus",
+            "units": "mm<sup><sup>3</sup></sup>"
+        },
+        "hippocampalpercentage": {
+            "priority": 2,
+            "display": "Hippocampal Percentage",
+            "units": "%"
+        },
+        "frontal": {
+            "priority": 3,
+            "display": "Frontal",
+            "units": "mm<sup><sup>3</sup></sup>"
+        },
+        "parietal": {
+            "priority": 4,
+            "display": "Parietal",
+            "units": "mm<sup><sup>3</sup></sup>"
+        },
+        "occipital": {
+            "priority": 5,
+            "display": "Occipital",
+            "units": "mm<sup><sup>3</sup></sup>"
+        },
+        "temporal": {
+            "priority": 6,
+            "display": "Temporal",
+            "units": "mm<sup><sup>3</sup></sup>"
+        },
+        "cingulatefrontal": {
+            "priority": 7,
+            "display": "Cingulate Frontal",
+            "units": "mm<sup><sup>3</sup></sup>"
+        },
+        "cingulateparietal": {
+            "priority": 8,
+            "display": "Cingulate Parietal",
+            "units": "mm<sup><sup>3</sup></sup>"
+        },
+        "entorhinalcortex": {
+            "priority": 9,
+            "display": "Entorhinal Cortex",
+            "units": "mm<sup><sup>3</sup></sup>"
+        }
+    },
+    "additions": {
+        "hemisphere_labels": {
             "Frontal": [
-                "Superior Frontal", "Rostral Middle Frontal", "Caudal Middle Frontal",
-                "Pars Opercularis", "Pars Triangularis", "Pars Orbitalis",
-                "Lateral Orbitofrontal", "Medial Orbitofrontal", "Precentral",
+                "Superior Frontal",
+                "Rostral Middle Frontal",
+                "Caudal Middle Frontal",
+                "Pars Opercularis",
+                "Pars Triangularis",
+                "Pars Orbitalis",
+                "Lateral Orbitofrontal",
+                "Medial Orbitofrontal",
+                "Precentral",
                 "Paracentral"
             ],
             "Parietal": [
-                "Superior Parietal", "Inferior Parietal", "Supramarginal",
-                "Postcentral", "Precuneus"
+                "Superior Parietal",
+                "Inferior Parietal",
+                "Supramarginal",
+                "Postcentral",
+                "Precuneus"
             ],
             "Occipital": [
-                "Lateral Occipital", "Lingual", "Cuneus", "Pericalcarine"
+                "Lateral Occipital",
+                "Lingual",
+                "Cuneus",
+                "Pericalcarine"
             ],
             "Temporal": [
-                "Superior Temporal", "Middle Temporal", "Inferior Temporal",
-                "Fusiform", "Transverse Temporal", "Entorhinal", "Parahippocampal"
+                "Superior Temporal",
+                "Middle Temporal",
+                "Inferior Temporal",
+                "Fusiform",
+                "Transverse Temporal",
+                "Entorhinal",
+                "Parahippocampal"
             ],
             "Cingulate (Frontal)": [
-                "Rostral Anterior Cingulate", "Caudal Anterior Cingulate"
+                "Rostral Anterior Cingulate",
+                "Caudal Anterior Cingulate"
             ],
             "Cingulate (Parietal)": [
-                "Posterior Cingulate", "Isthmus Cingulate"
+                "Posterior Cingulate",
+                "Isthmus Cingulate"
             ],
             "Entorhinal Cortex": [
                 " entorhinal"
             ]
         }
-},
-"otherlabels":
-    {
-        "Left-Hippocampus" : "hippocampus_lh",
+    },
+    "otherlabels": {
+        "Left-Hippocampus": "hippocampus_lh",
         "Right-Hippocampus": "hippocampus_rh",
         "Left-Hippocampal-Percentage": "hippocampalpercentage_lh",
         "Right-Hippocampal-Percentage": "hippocampalpercentage_rh"
