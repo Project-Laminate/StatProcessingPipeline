@@ -38,13 +38,11 @@ class CustomFunctions:
         print(df.columns)
 
         df["Left-Hippocampal-Percentage"] = (
-            df["Left-Hippocampus"]
-            / (df["Left-Hippocampus"] + df["Left-Inf-Lat-Vent"])
-            * 100
+            (df["Left-Hippocampus"] / (df["Left-Hippocampus"] + df["Left-Inf-Lat-Vent"])) * 100
         )
         df["Right-Hippocampal-Percentage"] = (
-            df["Right-Hippocampus"]
-            / (df["Right-Hippocampus"] + df["Right-Inf-Lat-Vent"])
+            (df["Right-Hippocampus"]
+            / (df["Right-Hippocampus"] + df["Right-Inf-Lat-Vent"]))
             * 100
         )
         return df
@@ -212,23 +210,37 @@ def calculate_percentiles_and_normals(
             value = stats_df[column].iloc[0]
 
             percentile = percentileofscore(filtered_normative_df[column], value, "rank")
-            max_normal = filtered_normative_df[column].mean() + (
+            meanplus2std = filtered_normative_df[column].mean() + (
                 2 * filtered_normative_df[column].std()
             )
-            min_normal = filtered_normative_df[column].mean() - (
+            meanminus2std = filtered_normative_df[column].mean() - (
                 2 * filtered_normative_df[column].std()
             )
 
+            fifth_percentile = filtered_normative_df[column].quantile(0.05)
+            twentyfifth_percentile = filtered_normative_df[column].quantile(0.25)
+            seventyfifth_percentile = filtered_normative_df[column].quantile(0.75)
+            ninetyfifth_percentile = filtered_normative_df[column].quantile(0.95)
+
+            # Add the calculated values to the new DataFrame
             new_data[f"{column}_reading"] = [value]
             new_data[f"{column}_percentile"] = [percentile]
-            new_data[f"{column}_max_normal"] = [max_normal]
-            new_data[f"{column}_min_normal"] = [min_normal]
+            new_data[f"{column}_5thpercentile"] = [fifth_percentile]
+            new_data[f"{column}_25thpercentile"] = [twentyfifth_percentile]
+            new_data[f"{column}_75thpercentile"] = [seventyfifth_percentile]
+            new_data[f"{column}_95thpercentile"] = [ninetyfifth_percentile]
+            new_data[f"{column}_median"] = [filtered_normative_df[column].median()]
+            # new_data[f"{column}_meanplus2std"] = [meanplus2std]
+            # new_data[f"{column}_meanminus2std"] = [meanminus2std]
             new_data[f"{column}_mean"] = [filtered_normative_df[column].mean()]
             new_data[f"{column}_std"] = [filtered_normative_df[column].std()]
+
         else:
             logging.warning(
                 f"Column {column} not found in filtered normative data or insufficient unique values for percentile calculation"
             )
+
+    print(new_data)
 
     return pd.DataFrame(new_data)
 
@@ -287,10 +299,16 @@ def csv_to_json(csv_path, json_path):
             report_data[base_label][hemisphere]["reading"] = metric_value
         elif metric_type == "percentile":
             report_data[base_label][hemisphere]["percentile"] = metric_value
-        elif metric_type == "max":
-            report_data[base_label][hemisphere]["max"] = metric_value
-        elif metric_type == "min":
-            report_data[base_label][hemisphere]["min"] = metric_value
+        elif metric_type == "5thpercentile":
+            report_data[base_label][hemisphere]["fifth_percentile"] = metric_value
+        elif metric_type == "25thpercentile":
+            report_data[base_label][hemisphere]["twentyfifth_percentile"] = metric_value
+        elif metric_type == "75thpercentile":
+            report_data[base_label][hemisphere]["seventyfifth_percentile"] = metric_value
+        elif metric_type == "95thpercentile":
+            report_data[base_label][hemisphere]["ninetyfifth_percentile"] = metric_value
+        elif metric_type == "median":
+            report_data[base_label][hemisphere]["median"] = metric_value
         elif metric_type == "mean":
             report_data[base_label][hemisphere]["mean"] = metric_value
         elif metric_type == "std":
@@ -350,8 +368,11 @@ def transform_json(initial_json, config):
                 "reading": metrics.get("reading"),
                 "unit": units,
                 "percentile": metrics.get("percentile"),
-                "max": metrics.get("max"),
-                "min": metrics.get("min"),
+                "fifth_percentile": metrics.get("fifth_percentile"),
+                "twentyfifth_percentile": metrics.get("twentyfifth_percentile"),
+                "seventyfifth_percentile": metrics.get("seventyfifth_percentile"),
+                "ninetyfifth_percentile": metrics.get("ninetyfifth_percentile"),
+                "median": metrics.get("median"),
                 "mean": metrics.get("mean"),
                 "std": metrics.get("std"),
             }

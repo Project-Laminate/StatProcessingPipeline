@@ -5,43 +5,48 @@
             "display": "Hippocampus",
             "units": "mm<sup><sup>3</sup></sup>"
         },
-        "hippocampalpercentage": {
+        "latinfvent": {
             "priority": 2,
+            "display": "Lateral Inferior Ventricle",
+            "units": "mm<sup><sup>3</sup></sup>"
+        },
+        "hippocampalpercentage":{
+            "priority": 3,
             "display": "Hippocampal Percentage",
             "units": "%"
         },
         "frontal": {
-            "priority": 3,
+            "priority": 4,
             "display": "Frontal",
             "units": "mm<sup><sup>3</sup></sup>"
         },
         "parietal": {
-            "priority": 4,
+            "priority": 5,
             "display": "Parietal",
             "units": "mm<sup><sup>3</sup></sup>"
         },
         "occipital": {
-            "priority": 5,
+            "priority": 6,
             "display": "Occipital",
             "units": "mm<sup><sup>3</sup></sup>"
         },
         "temporal": {
-            "priority": 6,
+            "priority": 7,
             "display": "Temporal",
             "units": "mm<sup><sup>3</sup></sup>"
         },
         "cingulatefrontal": {
-            "priority": 7,
+            "priority": 8,
             "display": "Cingulate Frontal",
             "units": "mm<sup><sup>3</sup></sup>"
         },
         "cingulateparietal": {
-            "priority": 8,
+            "priority": 9,
             "display": "Cingulate Parietal",
             "units": "mm<sup><sup>3</sup></sup>"
         },
         "entorhinalcortex": {
-            "priority": 9,
+            "priority": 10,
             "display": "Entorhinal Cortex",
             "units": "mm<sup><sup>3</sup></sup>"
         }
@@ -99,6 +104,8 @@
         "Left-Hippocampus": "hippocampus_lh",
         "Right-Hippocampus": "hippocampus_rh",
         "Left-Hippocampal-Percentage": "hippocampalpercentage_lh",
-        "Right-Hippocampal-Percentage": "hippocampalpercentage_rh"
+        "Right-Hippocampal-Percentage": "hippocampalpercentage_rh",
+        "Left-Inf-Lat-Vent": "latinfvent_lh",
+        "Right-Inf-Lat-Vent": "latinfvent_rh"
     }
 }

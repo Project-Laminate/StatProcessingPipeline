@@ -3,16 +3,22 @@
         "rh": {
             "reading": 66120.029,
             "percentile": 19.11764705882353,
-            "max": 87120.19025486856,
-            "min": 58017.40415689615,
+            "fifth_percentile": 62547.12545,
+            "twentyfifth_percentile": 66690.32375,
+            "seventyfifth_percentile": 76681.16075,
+            "ninetyfifth_percentile": 84168.52404999999,
+            "median": 72274.0205,
             "mean": 72568.79720588235,
             "std": 7275.696524493102
         },
         "lh": {
             "reading": 62547.311,
             "percentile": 10.294117647058824,
-            "max": 85983.30450146379,
-            "min": 58034.05646912449,
+            "fifth_percentile": 62155.17765,
+            "twentyfifth_percentile": 67371.3125,
+            "seventyfifth_percentile": 75780.93375,
+            "ninetyfifth_percentile": 83649.30195,
+            "median": 71446.7715,
             "mean": 72008.68048529414,
             "std": 6987.312008084827
         }
@@ -21,16 +27,22 @@
         "rh": {
             "reading": 49220.14,
             "percentile": 60.294117647058826,
-            "max": 56729.98956943878,
-            "min": 39167.29001879648,
+            "fifth_percentile": 42253.2695,
+            "twentyfifth_percentile": 44632.00175,
+            "seventyfifth_percentile": 51156.49625,
+            "ninetyfifth_percentile": 54296.2913,
+            "median": 47804.303,
             "mean": 47948.63979411763,
             "std": 4390.674887660576
         },
         "lh": {
             "reading": 47421.333,
             "percentile": 63.235294117647065,
-            "max": 55135.487240844246,
-            "min": 37117.78720033224,
+            "fifth_percentile": 39806.6963,
+            "twentyfifth_percentile": 42672.66025,
+            "seventyfifth_percentile": 49095.18275,
+            "ninetyfifth_percentile": 52703.78705,
+            "median": 45784.2655,
             "mean": 46126.63722058824,
             "std": 4504.425010128
         }
@@ -39,16 +51,22 @@
         "rh": {
             "reading": 19799.039,
             "percentile": 20.58823529411765,
-            "max": 28080.924649091303,
-            "min": 16121.370997967522,
+            "fifth_percentile": 18150.73355,
+            "twentyfifth_percentile": 19955.54,
+            "seventyfifth_percentile": 23419.19375,
+            "ninetyfifth_percentile": 27464.23285,
+            "median": 21841.848,
             "mean": 22101.147823529413,
             "std": 2989.888412780945
         },
         "lh": {
             "reading": 19261.797,
             "percentile": 16.176470588235297,
-            "max": 27880.642637828067,
-            "min": 16119.62274452486,
+            "fifth_percentile": 17830.54175,
+            "twentyfifth_percentile": 19946.9185,
+            "seventyfifth_percentile": 23346.376,
+            "ninetyfifth_percentile": 27304.8455,
+            "median": 21836.797,
             "mean": 22000.132691176463,
             "std": 2940.254973325801
         }
@@ -57,16 +75,22 @@
         "rh": {
             "reading": 49402.566,
             "percentile": 83.82352941176471,
-            "max": 53943.92487338632,
-            "min": 38563.3542442607,
+            "fifth_percentile": 40811.39975,
+            "twentyfifth_percentile": 43748.3135,
+            "seventyfifth_percentile": 48258.075,
+            "ninetyfifth_percentile": 52806.31455,
+            "median": 46172.919,
             "mean": 46253.63955882351,
             "std": 3845.142657281407
         },
         "lh": {
             "reading": 50094.327,
             "percentile": 75.0,
-            "max": 55039.76244825203,
-            "min": 39231.99169880676,
+            "fifth_percentile": 41188.4225,
+            "twentyfifth_percentile": 44294.027,
+            "seventyfifth_percentile": 49923.70375,
+            "ninetyfifth_percentile": 53139.1971,
+            "median": 46630.046,
             "mean": 47135.8770735294,
             "std": 3951.94268736132
         }
@@ -75,16 +99,22 @@
         "rh": {
             "reading": 3855.742,
             "percentile": 50.0,
-            "max": 5141.916240331847,
-            "min": 2611.139112609329,
+            "fifth_percentile": 2847.5076,
+            "twentyfifth_percentile": 3484.88525,
+            "seventyfifth_percentile": 4229.8055,
+            "ninetyfifth_percentile": 4837.6698,
+            "median": 3852.5305,
             "mean": 3876.527676470588,
             "std": 632.6942819306292
         },
         "lh": {
             "reading": 6293.343,
             "percentile": 77.94117647058825,
-            "max": 7391.42543063765,
-            "min": 3534.836569362349,
+            "fifth_percentile": 4184.8242,
+            "twentyfifth_percentile": 4780.3085,
+            "seventyfifth_percentile": 6062.97,
+            "ninetyfifth_percentile": 7053.71375,
+            "median": 5301.851500000001,
             "mean": 5463.130999999999,
             "std": 964.147215318825
         }
@@ -93,16 +123,22 @@
         "rh": {
             "reading": 4689.85,
             "percentile": 50.0,
-            "max": 5917.012117697555,
-            "min": 3503.04535289068,
+            "fifth_percentile": 3841.33795,
+            "twentyfifth_percentile": 4290.147999999999,
+            "seventyfifth_percentile": 5208.584,
+            "ninetyfifth_percentile": 5602.3063,
+            "median": 4690.5105,
             "mean": 4710.028735294118,
             "std": 603.4916912017189
         },
         "lh": {
             "reading": 5715.565,
             "percentile": 82.3529411764706,
-            "max": 6274.012019215647,
-            "min": 3653.276569019642,
+            "fifth_percentile": 4048.83165,
+            "twentyfifth_percentile": 4444.288500000001,
+            "seventyfifth_percentile": 5379.14575,
+            "ninetyfifth_percentile": 6082.31735,
+            "median": 4868.690500000001,
             "mean": 4963.644294117645,
             "std": 655.1838625490013
         }
@@ -111,16 +147,22 @@
         "rh": {
             "reading": 1540.569,
             "percentile": 30.88235294117647,
-            "max": 2031.305105919336,
-            "min": 1224.2196293747825,
+            "fifth_percentile": 1314.2383,
+            "twentyfifth_percentile": 1487.71925,
+            "seventyfifth_percentile": 1739.93025,
+            "ninetyfifth_percentile": 1927.64985,
+            "median": 1647.007,
             "mean": 1627.7623676470591,
             "std": 201.7713691361383
         },
         "lh": {
             "reading": 1648.268,
             "percentile": 48.52941176470589,
-            "max": 2070.966267597529,
-            "min": 1268.9716441671771,
+            "fifth_percentile": 1392.7809499999998,
+            "twentyfifth_percentile": 1531.959,
+            "seventyfifth_percentile": 1774.82575,
+            "ninetyfifth_percentile": 1996.18325,
+            "median": 1667.4789999999998,
             "mean": 1669.9689558823532,
             "std": 200.498655857588
         }
@@ -129,16 +171,22 @@
         "lh": {
             "reading": 3866.748,
             "percentile": 35.294117647058826,
-            "max": 4668.107549864926,
-            "min": 3341.887832488017,
+            "fifth_percentile": 3473.6137,
+            "twentyfifth_percentile": 3775.1465,
+            "seventyfifth_percentile": 4173.299499999999,
+            "ninetyfifth_percentile": 4575.8937,
+            "median": 4014.636,
             "mean": 4004.997691176472,
             "std": 331.5549293442272
         },
         "rh": {
             "reading": 4210.87,
             "percentile": 66.1764705882353,
-            "max": 4750.0584037413455,
-            "min": 3465.0793903763,
+            "fifth_percentile": 3611.19855,
+            "twentyfifth_percentile": 3906.882,
+            "seventyfifth_percentile": 4274.14625,
+            "ninetyfifth_percentile": 4647.62735,
+            "median": 4085.1915,
             "mean": 4107.568897058823,
             "std": 321.2447533412613
         }
@@ -147,18 +195,48 @@
         "lh": {
             "reading": 95.96532217114655,
             "percentile": 100.0,
-            "max": 97.98647703551266,
-            "min": 83.51591256232855,
+            "fifth_percentile": 84.40359774010311,
+            "twentyfifth_percentile": 89.10528258533326,
+            "seventyfifth_percentile": 93.40425804723826,
+            "ninetyfifth_percentile": 95.17222682412478,
+            "median": 91.29279001441806,
             "mean": 90.7511947989206,
             "std": 3.617641118296026
         },
         "rh": {
             "reading": 87.49272516358901,
             "percentile": 10.294117647058824,
-            "max": 96.6780262414696,
-            "min": 85.45114791139004,
+            "fifth_percentile": 86.73277177843082,
+            "twentyfifth_percentile": 89.12134618196308,
+            "seventyfifth_percentile": 92.9919644804543,
+            "ninetyfifth_percentile": 95.01335712537954,
+            "median": 91.51061580008896,
             "mean": 91.06458707642982,
             "std": 2.806719582519892
+        }
+    },
+    "latinfvent": {
+        "lh": {
+            "reading": 162.57,
+            "percentile": 0.0,
+            "fifth_percentile": 206.4645,
+            "twentyfifth_percentile": 287.92825,
+            "seventyfifth_percentile": 484.153,
+            "ninetyfifth_percentile": 713.2317499999999,
+            "median": 372.5395,
+            "mean": 410.7920294117648,
+            "std": 173.3433112051954
+        },
+        "rh": {
+            "reading": 601.953,
+            "percentile": 91.1764705882353,
+            "fifth_percentile": 221.15995,
+            "twentyfifth_percentile": 307.58000000000004,
+            "seventyfifth_percentile": 486.44625,
+            "ninetyfifth_percentile": 654.12035,
+            "median": 393.0865,
+            "mean": 405.4124999999999,
+            "std": 134.46654779984854
         }
     }
 }
