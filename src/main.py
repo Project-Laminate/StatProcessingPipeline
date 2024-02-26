@@ -5,7 +5,7 @@
 
 # Command to test:-
 # test single fastsurfer file
-# python src/main.py --age 64 --sex F s--stat-file data/aseg+DKT.stats --stat-type fastsurfer --normative-data data/normative_data.csv
+# python src/main.py --age 64 --sex F --stat-file data/aseg+DKT.stats --stat-type fastsurfer --normative-data data/normative_data.csv
 
 # test both fastsurfer and samseg files
 # python src/main.py --age 64 --sex F --stat-file data/aseg+DKT.stats --stat-type fastsurfer --stat-file data/samseg.stats --stat-type samseg --normative-data data/normative_data.csv

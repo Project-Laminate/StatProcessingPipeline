@@ -1,242 +1,290 @@
 {
     "frontal": {
         "rh": {
-            "reading": 66120.029,
-            "percentile": 19.11764705882353,
-            "fifth_percentile": 62547.12545,
-            "twentyfifth_percentile": 66690.32375,
-            "seventyfifth_percentile": 76681.16075,
-            "ninetyfifth_percentile": 84168.52404999999,
-            "median": 72274.0205,
-            "mean": 72568.79720588235,
-            "std": 7275.696524493102
+            "reading": 55635.891,
+            "percentile": 0.0,
+            "fifth_percentile": 61008.58,
+            "twentyfifth_percentile": 65177.973,
+            "seventyfifth_percentile": 76014.197,
+            "ninetyfifth_percentile": 81076.894,
+            "median": 69309.112,
+            "mean": 70629.6746557377,
+            "std": 6366.608305256135
         },
         "lh": {
-            "reading": 62547.311,
-            "percentile": 10.294117647058824,
-            "fifth_percentile": 62155.17765,
-            "twentyfifth_percentile": 67371.3125,
-            "seventyfifth_percentile": 75780.93375,
-            "ninetyfifth_percentile": 83649.30195,
-            "median": 71446.7715,
-            "mean": 72008.68048529414,
-            "std": 6987.312008084827
+            "reading": 56908.323,
+            "percentile": 0.0,
+            "fifth_percentile": 60603.741,
+            "twentyfifth_percentile": 65885.224,
+            "seventyfifth_percentile": 74451.16,
+            "ninetyfifth_percentile": 77835.32,
+            "median": 69566.366,
+            "mean": 69809.53891803279,
+            "std": 5929.8160277765655
         }
     },
     "parietal": {
         "rh": {
-            "reading": 49220.14,
-            "percentile": 60.294117647058826,
-            "fifth_percentile": 42253.2695,
-            "twentyfifth_percentile": 44632.00175,
-            "seventyfifth_percentile": 51156.49625,
-            "ninetyfifth_percentile": 54296.2913,
-            "median": 47804.303,
-            "mean": 47948.63979411763,
-            "std": 4390.674887660576
+            "reading": 38041.109,
+            "percentile": 0.0,
+            "fifth_percentile": 40616.65,
+            "twentyfifth_percentile": 43468.629,
+            "seventyfifth_percentile": 49926.128,
+            "ninetyfifth_percentile": 54755.336,
+            "median": 46963.311,
+            "mean": 47007.74154098362,
+            "std": 4306.091245449611
         },
         "lh": {
-            "reading": 47421.333,
-            "percentile": 63.235294117647065,
-            "fifth_percentile": 39806.6963,
-            "twentyfifth_percentile": 42672.66025,
-            "seventyfifth_percentile": 49095.18275,
-            "ninetyfifth_percentile": 52703.78705,
-            "median": 45784.2655,
-            "mean": 46126.63722058824,
-            "std": 4504.425010128
+            "reading": 39615.323,
+            "percentile": 0.0,
+            "fifth_percentile": 40220.511,
+            "twentyfifth_percentile": 42080.099,
+            "seventyfifth_percentile": 47990.712,
+            "ninetyfifth_percentile": 52269.314,
+            "median": 45164.202,
+            "mean": 45540.880147540985,
+            "std": 3991.407350873594
         }
     },
     "occipital": {
         "rh": {
-            "reading": 19799.039,
-            "percentile": 20.58823529411765,
-            "fifth_percentile": 18150.73355,
-            "twentyfifth_percentile": 19955.54,
-            "seventyfifth_percentile": 23419.19375,
-            "ninetyfifth_percentile": 27464.23285,
-            "median": 21841.848,
-            "mean": 22101.147823529413,
-            "std": 2989.888412780945
+            "reading": 14596.351,
+            "percentile": 0.0,
+            "fifth_percentile": 17721.135,
+            "twentyfifth_percentile": 20730.842,
+            "seventyfifth_percentile": 23049.513,
+            "ninetyfifth_percentile": 25189.16,
+            "median": 21513.54,
+            "mean": 21663.05572131147,
+            "std": 2286.202961815122
         },
         "lh": {
-            "reading": 19261.797,
-            "percentile": 16.176470588235297,
-            "fifth_percentile": 17830.54175,
-            "twentyfifth_percentile": 19946.9185,
-            "seventyfifth_percentile": 23346.376,
-            "ninetyfifth_percentile": 27304.8455,
-            "median": 21836.797,
-            "mean": 22000.132691176463,
-            "std": 2940.254973325801
+            "reading": 18034.52,
+            "percentile": 9.836065573770492,
+            "fifth_percentile": 17387.281,
+            "twentyfifth_percentile": 19771.436,
+            "seventyfifth_percentile": 22658.437,
+            "ninetyfifth_percentile": 25448.775,
+            "median": 21624.759,
+            "mean": 21462.24098360656,
+            "std": 2545.070559709281
         }
     },
     "temporal": {
         "rh": {
-            "reading": 49402.566,
-            "percentile": 83.82352941176471,
-            "fifth_percentile": 40811.39975,
-            "twentyfifth_percentile": 43748.3135,
-            "seventyfifth_percentile": 48258.075,
-            "ninetyfifth_percentile": 52806.31455,
-            "median": 46172.919,
-            "mean": 46253.63955882351,
-            "std": 3845.142657281407
+            "reading": 27994.01,
+            "percentile": 0.0,
+            "fifth_percentile": 39126.526,
+            "twentyfifth_percentile": 42421.631,
+            "seventyfifth_percentile": 46839.747,
+            "ninetyfifth_percentile": 51212.83,
+            "median": 44921.398,
+            "mean": 44819.26680327868,
+            "std": 3727.3737900914975
         },
         "lh": {
-            "reading": 50094.327,
-            "percentile": 75.0,
-            "fifth_percentile": 41188.4225,
-            "twentyfifth_percentile": 44294.027,
-            "seventyfifth_percentile": 49923.70375,
-            "ninetyfifth_percentile": 53139.1971,
-            "median": 46630.046,
-            "mean": 47135.8770735294,
-            "std": 3951.94268736132
+            "reading": 33049.133,
+            "percentile": 0.0,
+            "fifth_percentile": 40387.782,
+            "twentyfifth_percentile": 43002.408,
+            "seventyfifth_percentile": 47822.994,
+            "ninetyfifth_percentile": 50860.966,
+            "median": 45396.086,
+            "mean": 45590.85237704916,
+            "std": 3670.124758436921
         }
     },
     "cingulatefrontal": {
         "rh": {
-            "reading": 3855.742,
-            "percentile": 50.0,
-            "fifth_percentile": 2847.5076,
-            "twentyfifth_percentile": 3484.88525,
-            "seventyfifth_percentile": 4229.8055,
-            "ninetyfifth_percentile": 4837.6698,
-            "median": 3852.5305,
-            "mean": 3876.527676470588,
-            "std": 632.6942819306292
+            "reading": 2535.891,
+            "percentile": 0.0,
+            "fifth_percentile": 3187.913,
+            "twentyfifth_percentile": 3554.249,
+            "seventyfifth_percentile": 4323.223,
+            "ninetyfifth_percentile": 4975.136,
+            "median": 3876.483,
+            "mean": 3975.0702295081983,
+            "std": 617.7989567048057
         },
         "lh": {
-            "reading": 6293.343,
-            "percentile": 77.94117647058825,
-            "fifth_percentile": 4184.8242,
-            "twentyfifth_percentile": 4780.3085,
-            "seventyfifth_percentile": 6062.97,
-            "ninetyfifth_percentile": 7053.71375,
-            "median": 5301.851500000001,
-            "mean": 5463.130999999999,
-            "std": 964.147215318825
+            "reading": 3997.66,
+            "percentile": 3.278688524590164,
+            "fifth_percentile": 4313.476,
+            "twentyfifth_percentile": 4783.494,
+            "seventyfifth_percentile": 5610.755,
+            "ninetyfifth_percentile": 6741.081,
+            "median": 5205.13,
+            "mean": 5306.898,
+            "std": 801.0679008528346
         }
     },
     "cingulateparietal": {
         "rh": {
-            "reading": 4689.85,
-            "percentile": 50.0,
-            "fifth_percentile": 3841.33795,
-            "twentyfifth_percentile": 4290.147999999999,
-            "seventyfifth_percentile": 5208.584,
-            "ninetyfifth_percentile": 5602.3063,
-            "median": 4690.5105,
-            "mean": 4710.028735294118,
-            "std": 603.4916912017189
+            "reading": 3424.06,
+            "percentile": 1.639344262295082,
+            "fifth_percentile": 3786.487,
+            "twentyfifth_percentile": 4355.992,
+            "seventyfifth_percentile": 5123.961,
+            "ninetyfifth_percentile": 5668.244,
+            "median": 4688.979,
+            "mean": 4718.224918032788,
+            "std": 594.34360696198
         },
         "lh": {
-            "reading": 5715.565,
-            "percentile": 82.3529411764706,
-            "fifth_percentile": 4048.83165,
-            "twentyfifth_percentile": 4444.288500000001,
-            "seventyfifth_percentile": 5379.14575,
-            "ninetyfifth_percentile": 6082.31735,
-            "median": 4868.690500000001,
-            "mean": 4963.644294117645,
-            "std": 655.1838625490013
+            "reading": 3891.699,
+            "percentile": 3.278688524590164,
+            "fifth_percentile": 4065.631,
+            "twentyfifth_percentile": 4468.286,
+            "seventyfifth_percentile": 5211.903,
+            "ninetyfifth_percentile": 5671.676,
+            "median": 4801.779,
+            "mean": 4831.871606557377,
+            "std": 502.5864755347176
         }
     },
     "entorhinalcortex": {
         "rh": {
-            "reading": 1540.569,
-            "percentile": 30.88235294117647,
-            "fifth_percentile": 1314.2383,
-            "twentyfifth_percentile": 1487.71925,
-            "seventyfifth_percentile": 1739.93025,
-            "ninetyfifth_percentile": 1927.64985,
-            "median": 1647.007,
-            "mean": 1627.7623676470591,
-            "std": 201.7713691361383
+            "reading": 487.828,
+            "percentile": 0.0,
+            "fifth_percentile": 1304.516,
+            "twentyfifth_percentile": 1459.377,
+            "seventyfifth_percentile": 1732.954,
+            "ninetyfifth_percentile": 2032.293,
+            "median": 1572.454,
+            "mean": 1596.0146065573774,
+            "std": 213.06275728427048
         },
         "lh": {
-            "reading": 1648.268,
-            "percentile": 48.52941176470589,
-            "fifth_percentile": 1392.7809499999998,
-            "twentyfifth_percentile": 1531.959,
-            "seventyfifth_percentile": 1774.82575,
-            "ninetyfifth_percentile": 1996.18325,
-            "median": 1667.4789999999998,
-            "mean": 1669.9689558823532,
-            "std": 200.498655857588
+            "reading": 1133.401,
+            "percentile": 0.0,
+            "fifth_percentile": 1407.661,
+            "twentyfifth_percentile": 1547.385,
+            "seventyfifth_percentile": 1767.193,
+            "ninetyfifth_percentile": 2029.664,
+            "median": 1645.977,
+            "mean": 1663.4224590163935,
+            "std": 197.63755826222013
         }
     },
     "hippocampus": {
         "lh": {
-            "reading": 3866.748,
-            "percentile": 35.294117647058826,
-            "fifth_percentile": 3473.6137,
-            "twentyfifth_percentile": 3775.1465,
-            "seventyfifth_percentile": 4173.299499999999,
-            "ninetyfifth_percentile": 4575.8937,
-            "median": 4014.636,
-            "mean": 4004.997691176472,
-            "std": 331.5549293442272
+            "reading": 2300.434,
+            "percentile": 0.0,
+            "fifth_percentile": 3363.329,
+            "twentyfifth_percentile": 3538.692,
+            "seventyfifth_percentile": 3985.888,
+            "ninetyfifth_percentile": 4334.73,
+            "median": 3813.462,
+            "mean": 3778.2238032786886,
+            "std": 302.902142078968
         },
         "rh": {
-            "reading": 4210.87,
-            "percentile": 66.1764705882353,
-            "fifth_percentile": 3611.19855,
-            "twentyfifth_percentile": 3906.882,
-            "seventyfifth_percentile": 4274.14625,
-            "ninetyfifth_percentile": 4647.62735,
-            "median": 4085.1915,
-            "mean": 4107.568897058823,
-            "std": 321.2447533412613
+            "reading": 2176.426,
+            "percentile": 0.0,
+            "fifth_percentile": 3281.575,
+            "twentyfifth_percentile": 3616.619,
+            "seventyfifth_percentile": 4060.544,
+            "ninetyfifth_percentile": 4279.837,
+            "median": 3892.577,
+            "mean": 3864.695852459016,
+            "std": 324.4160592131569
         }
     },
     "hippocampalpercentage": {
         "lh": {
-            "reading": 95.96532217114655,
-            "percentile": 100.0,
-            "fifth_percentile": 84.40359774010311,
-            "twentyfifth_percentile": 89.10528258533326,
-            "seventyfifth_percentile": 93.40425804723826,
-            "ninetyfifth_percentile": 95.17222682412478,
-            "median": 91.29279001441806,
-            "mean": 90.7511947989206,
-            "std": 3.617641118296026
+            "reading": 35.91941827766093,
+            "percentile": 0.0,
+            "fifth_percentile": 79.02414441613175,
+            "twentyfifth_percentile": 83.64071849869708,
+            "seventyfifth_percentile": 91.20698478060548,
+            "ninetyfifth_percentile": 92.60061116346144,
+            "median": 88.45919280746796,
+            "mean": 87.40686051027755,
+            "std": 4.842830301090142
         },
         "rh": {
-            "reading": 87.49272516358901,
-            "percentile": 10.294117647058824,
-            "fifth_percentile": 86.73277177843082,
-            "twentyfifth_percentile": 89.12134618196308,
-            "seventyfifth_percentile": 92.9919644804543,
-            "ninetyfifth_percentile": 95.01335712537954,
-            "median": 91.51061580008896,
-            "mean": 91.06458707642982,
-            "std": 2.806719582519892
+            "reading": 29.928356517769227,
+            "percentile": 0.0,
+            "fifth_percentile": 78.80553063070165,
+            "twentyfifth_percentile": 86.2794626669821,
+            "seventyfifth_percentile": 91.00140073463196,
+            "ninetyfifth_percentile": 93.6132262580492,
+            "median": 89.50950891659365,
+            "mean": 88.27787250034665,
+            "std": 4.584888663332094
         }
     },
     "latinfvent": {
         "lh": {
-            "reading": 162.57,
-            "percentile": 0.0,
-            "fifth_percentile": 206.4645,
-            "twentyfifth_percentile": 287.92825,
-            "seventyfifth_percentile": 484.153,
-            "ninetyfifth_percentile": 713.2317499999999,
-            "median": 372.5395,
-            "mean": 410.7920294117648,
-            "std": 173.3433112051954
+            "reading": 4103.996,
+            "percentile": 100.0,
+            "fifth_percentile": 311.06,
+            "twentyfifth_percentile": 373.695,
+            "seventyfifth_percentile": 710.81,
+            "ninetyfifth_percentile": 958.92,
+            "median": 473.634,
+            "mean": 551.8985409836065,
+            "std": 239.5166062699741
         },
         "rh": {
-            "reading": 601.953,
-            "percentile": 91.1764705882353,
-            "fifth_percentile": 221.15995,
-            "twentyfifth_percentile": 307.58000000000004,
-            "seventyfifth_percentile": 486.44625,
-            "ninetyfifth_percentile": 654.12035,
-            "median": 393.0865,
-            "mean": 405.4124999999999,
-            "std": 134.46654779984854
+            "reading": 5095.694,
+            "percentile": 100.0,
+            "fifth_percentile": 266.549,
+            "twentyfifth_percentile": 388.678,
+            "seventyfifth_percentile": 604.226,
+            "ninetyfifth_percentile": 957.099,
+            "median": 457.43,
+            "mean": 518.2719672131149,
+            "std": 222.17248019717823
+        }
+    },
+    "cerebellumwhitematter": {
+        "lh": {
+            "reading": 10025.917,
+            "percentile": 3.278688524590164,
+            "fifth_percentile": 10361.457,
+            "twentyfifth_percentile": 11683.242,
+            "seventyfifth_percentile": 13770.433,
+            "ninetyfifth_percentile": 15589.5,
+            "median": 13022.127,
+            "mean": 12920.990852459014,
+            "std": 1643.7380573369633
+        },
+        "rh": {
+            "reading": 10042.327,
+            "percentile": 3.278688524590164,
+            "fifth_percentile": 10336.256,
+            "twentyfifth_percentile": 11583.145,
+            "seventyfifth_percentile": 13477.657,
+            "ninetyfifth_percentile": 15155.73,
+            "median": 12665.207,
+            "mean": 12607.79552459016,
+            "std": 1585.522766499014
+        }
+    },
+    "cerebellumcortex": {
+        "lh": {
+            "reading": 38189.257,
+            "percentile": 0.0,
+            "fifth_percentile": 42197.577,
+            "twentyfifth_percentile": 44258.744,
+            "seventyfifth_percentile": 51644.288,
+            "ninetyfifth_percentile": 54322.768,
+            "median": 49036.581,
+            "mean": 48436.20075409834,
+            "std": 4367.968069956581
+        },
+        "rh": {
+            "reading": 38161.326,
+            "percentile": 0.0,
+            "fifth_percentile": 43455.967,
+            "twentyfifth_percentile": 45598.163,
+            "seventyfifth_percentile": 52811.615,
+            "ninetyfifth_percentile": 55369.364,
+            "median": 50351.274,
+            "mean": 49595.446065573786,
+            "std": 4441.103720023946
         }
     }
 }

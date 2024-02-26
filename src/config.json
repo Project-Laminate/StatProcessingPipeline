@@ -15,38 +15,48 @@
             "display": "Hippocampal Percentage",
             "units": "%"
         },
-        "frontal": {
+        "cerebellumcortex": {
             "priority": 4,
+            "display": "Cerebellum Cortex",
+            "units": "mm<sup><sup>3</sup></sup>"
+        },
+        "cerebellumwhitematter": {
+            "priority": 5,
+            "display": "Cerebellum White Matter",
+            "units": "mm<sup><sup>3</sup></sup>"
+        },
+        "frontal": {
+            "priority": 6,
             "display": "Frontal",
             "units": "mm<sup><sup>3</sup></sup>"
         },
         "parietal": {
-            "priority": 5,
+            "priority": 7,
             "display": "Parietal",
             "units": "mm<sup><sup>3</sup></sup>"
         },
         "occipital": {
-            "priority": 6,
+            "priority": 8,
             "display": "Occipital",
             "units": "mm<sup><sup>3</sup></sup>"
         },
         "temporal": {
-            "priority": 7,
+            "priority": 9,
             "display": "Temporal",
             "units": "mm<sup><sup>3</sup></sup>"
         },
         "cingulatefrontal": {
-            "priority": 8,
+            "priority": 10,
             "display": "Cingulate Frontal",
             "units": "mm<sup><sup>3</sup></sup>"
         },
         "cingulateparietal": {
-            "priority": 9,
+            "priority": 11,
             "display": "Cingulate Parietal",
             "units": "mm<sup><sup>3</sup></sup>"
         },
         "entorhinalcortex": {
-            "priority": 10,
+            "priority": 12,
             "display": "Entorhinal Cortex",
             "units": "mm<sup><sup>3</sup></sup>"
         }
@@ -106,6 +116,10 @@
         "Left-Hippocampal-Percentage": "hippocampalpercentage_lh",
         "Right-Hippocampal-Percentage": "hippocampalpercentage_rh",
         "Left-Inf-Lat-Vent": "latinfvent_lh",
-        "Right-Inf-Lat-Vent": "latinfvent_rh"
+        "Right-Inf-Lat-Vent": "latinfvent_rh",
+        "Left-Cerebellum-White-Matter": "cerebellumwhitematter_lh",
+        "Right-Cerebellum-White-Matter": "cerebellumwhitematter_rh",
+        "Left-Cerebellum-Cortex": "cerebellumcortex_lh",
+        "Right-Cerebellum-Cortex": "cerebellumcortex_rh"
     }
 }
