@@ -2,8 +2,6 @@
 
 This project provides a command-line interface (CLI) for the Stat Processing Pipeline. It is designed to convert `.stat` files into CSV and JSON format using normative data.
 
-[![Python package](https://github.com/Project-Laminate/StatProcessingPipeline/actions/workflows/python-package.yml/badge.svg)](https://github.com/Project-Laminate/StatProcessingPipeline/actions/workflows/python-package.yml)
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
